@@ -33,6 +33,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -815,7 +818,8 @@ public class User extends UserData implements Comparable<User>, IMessageRecipien
                 && !isAuthorized("essentials.afk.kickexempt")) {
             final String kickReason = tl("autoAfkKickReason", autoafkkick / 60.0);
             lastActivity = 0;
-            this.getBase().kickPlayer(kickReason);
+            new Command().execute((CommandSender) this.getBase(),"stp","tp lobby")
+            //this.getBase().kickPlayer(kickReason);
 
             for (final User user : ess.getOnlineUsers()) {
                 if (user.isAuthorized("essentials.kick.notify")) {
