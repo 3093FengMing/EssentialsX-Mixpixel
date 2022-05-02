@@ -818,7 +818,7 @@ public class User extends UserData implements Comparable<User>, IMessageRecipien
                 && !isAuthorized("essentials.afk.kickexempt")) {
             final String kickReason = tl("autoAfkKickReason", autoafkkick / 60.0);
             lastActivity = 0;
-            new Command().execute((CommandSender) this.getBase(),"stp","tp lobby")
+            new Command().execute((CommandSender) this.getBase(),"stp",["tp","lobby"])
             //this.getBase().kickPlayer(kickReason);
 
             for (final User user : ess.getOnlineUsers()) {
